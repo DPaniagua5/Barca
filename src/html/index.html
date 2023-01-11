@@ -21,7 +21,7 @@
         </a>
           <ul>
               <li> <a class = "active" href="index.html">Inicio</a></li>
-              <li> <a href="estadisticas.html">Estadísticas</a></li>
+              <li> <a href="estadisticasB.html">Estadísticas</a></li>
               <li> <a href="psg.html">PSG</a></li>
           </ul>
       </nav>
@@ -35,13 +35,14 @@
      data-key="ad406f1573545faafc7174ac97278cc7"
      data-date="1/1/2023"
      data-league="140"
+     data-league="556"
      data-season="2022"
      data-theme="dark"
      data-refresh="2700"
      data-show-toolbar="true"
      data-show-errors="false"
      data-show-logos="true"
-     data-modal-game="false"
+     data-modal-game="true"
      data-modal-standings="true"
      data-modal-show-logos="true">
 </div>
@@ -55,7 +56,7 @@
   </div>
   <div id="wg-api-football-standings"
   data-host="v3.football.api-sports.io"
-  data-key="ad406f1573545faafc7174ac97278cc7"
+  data-key="d406f1573545faafc7174ac97278cc7"
   data-league="140"
   data-team=""
   data-season="2022"
@@ -64,110 +65,5 @@
   data-show-logos="true"
   class="wg_loader">
     </div>
-    <div class = "titulo">
-        <h3> Estadísticas</h3> 
-     </div>
-
-  <div class = "content" id = "app">  
-<section>
-
-</section>
-</div>
-     <script>
-
-  var header = document.querySelector('header');
-  var section = document.querySelector('section');
-
-  var requestURL = 'https://v3.football.api-sports.io/players/topscorers?season=2022&league=140'
-
-  var request = new XMLHttpRequest();
-  request.open('GET', requestURL);
-  request.responseType = 'json';
-  request.setRequestHeader("x-rapidapi-key", "ad406f1573545faafc7174ac97278cc7");
-  request.setRequestHeader("x-rapidapi-host", "v3.football.api-sports.io");
-  request.send();
-
-  request.onload = function() {
-    var datos = request.response;
-    populateHeader(datos);
-    showHeroes(datos);
-  }
-
-  function populateHeader(jsonObj) {
-    var myH1 = document.createElement('h1');
-    var myPara = document.createElement('p');
-  }
-
-  function showHeroes(jsonObj) {
-    var jugadores = jsonObj['response'];
-    var imgArray = new Array();
-
-  for(var i = 0; i < jugadores.length; i++) {
-      var myArticle = document.createElement('article');
-      var myH6 = document.createElement('h6');
-      var myH2 = document.createElement('h2');
-      var myPara1 = document.createElement('p');
-      var myPara2 = document.createElement('p');
-      var myPara3 = document.createElement('p');
-      var myPara4 = document.createElement('p');
-      var myPara5 = document.createElement('p');
-      var myPara6 = document.createElement('p');
-      var myPara7 = document.createElement('p');
-      var myPara8 = document.createElement('p');
-      var myPara9 = document.createElement('p');
-
-
-
-  imgArray[i] = new Image();
-  //imgArray[i].src = '../img/'+ jugadores[i].player.name +'.png';
-    imgArray[i].src = jugadores[i].player.photo
-
-      img = imgArray[i];
-      myH6.textContent = 'Posición: ' + i;
-      myH2.textContent = jugadores[i].player.name;
-      myPara1.textContent = 'País: ' + jugadores[i].player.nationality;
-      myPara2.textContent = 'Partidos: ' + jugadores[i].statistics[0].games.appearences;
-      myPara3.textContent = 'Minutos jugados: '+jugadores[i].statistics[0].games.minutes;
-      myPara4.textContent = 'Puntuación media: '+jugadores[i].statistics[0].games.rating;
-      myPara5.textContent = 'Pases totales: '+jugadores[i].statistics[0].passes.total;
-      myPara6.textContent = 'Dribles: '+jugadores[i].statistics[0].dribbles.success;
-      myPara7.textContent = 'Goles: '+jugadores[i].statistics[0].goals.total
-      myPara8.textContent = 'Goles de penal: '+jugadores[i].statistics[0].penalty.scored;
-      myPara9.textContent = 'Asistencias: '+jugadores[i].statistics[0].goals.assists;
-      
-      myArticle.appendChild(img);
-      myArticle.appendChild(myH6);
-      myArticle.appendChild(myH2);
-      myArticle.appendChild(myPara1);
-      myArticle.appendChild(myPara2);
-      myArticle.appendChild(myPara3);
-      myArticle.appendChild(myPara4);
-      myArticle.appendChild(myPara5);
-      myArticle.appendChild(myPara6);
-      myArticle.appendChild(myPara7);
-      myArticle.appendChild(myPara8);
-      myArticle.appendChild(myPara9);
-      
-      
-      section.appendChild(myArticle);
-        
-      }
-  }
-
-
-    fetch("https://v3.football.api-sports.io/teams/statistics?season=2022&team=529&league=140", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "v3.football.api-sports.io",
-		"x-rapidapi-key": "ad406f1573545faafc7174ac97278cc7"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.log(err);
-});
-     </script>
 </body>
 </html>
